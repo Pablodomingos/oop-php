@@ -1,0 +1,20 @@
+{
+    "name": "pablodomingos/poo-php",
+    "description": "Estudos de orientação a objeto no PHP.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pablo\\PooPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pablodomingos",
+            "email": "pablodomingos1700@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "symfony/var-dumper": "^6.4"
+    }
+}
