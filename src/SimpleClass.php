@@ -15,7 +15,7 @@ class SimpleClass
     public function __construct(
         Closure $bar = null
     ) {
-        $this->bar = $bar instanceof Closure ? $bar : [$this, 'bar'](...);
+        $this->bar = $bar instanceof Closure ? $bar : $this->{'bar'}(...);
     }
 
     /**
