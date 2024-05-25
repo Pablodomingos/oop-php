@@ -7,6 +7,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Pablo\PooPhp\{
     SimpleClass,
     ExtendClass,
+    SimpleReadonlyClass,
+    ExampleConstructClass,
 };
 
 /**
@@ -78,3 +80,21 @@ dump($instanceExtend->foo(), ($instanceExtend->bar)());
 $teste = null;
 dump($teste?->foo());
 
+$testePropertyReadOnly = new SimpleReadonlyClass(10, new stdClass);
+dump($testePropertyReadOnly->number);
+
+//Fatal error: Uncaught Error: Cannot write to a readonly property
+
+//Porque isso gera um erro fatal?
+// $testePropertyReadOnly->setNumber(20);
+// $testePropertyReadOnly->number = 20;
+
+//Porque isso não gera um erro fatal?
+$testePropertyReadOnly->obj->foo = 'Foo';
+dump($testePropertyReadOnly->obj);
+
+dump($instanceSimple->getConstante());
+dump($instanceExtend->getConstante());
+
+dump(ExampleConstructClass::fromBasicData('BAR', 30));
+dump(ExampleConstructClass::fromJson(json_encode(['owner' => 'BAZ', 'age' => 1])));
