@@ -8,8 +8,16 @@ use Closure;
 
 class ExtendClass extends SimpleClass
 {
+    const FOO = 'Children foo';
+
+    /**
+     * Se a classe não possui construtor ele será erdado da classe pai (se não for privado).
+     * Caso a classe filha não possui construtor os parenteses são opcionais na
+     * criação do objeto.
+     */
     public function __construct(
     ) {
+        // O parent:: referência ao construtor da classe pai.
         parent::__construct(Closure::fromCallable([$this, 'bar']));
     }
 

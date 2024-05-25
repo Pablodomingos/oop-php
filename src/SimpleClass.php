@@ -12,6 +12,20 @@ class SimpleClass
     public Closure|string $var = 'a default value';
     public Closure $bar;
 
+    /**
+     * A visibilidade padrão de um constânte é public.
+     * 
+     * **Constantes de classe são alocadas por classe,e não por instância da classe.
+     */
+    const FOO = 'Father foo';
+
+    /**
+     * Constantes podem ser redefinidas em classes filhas, mas a partir do
+     * PHP 8.1.0, constantes de classe não podem ser redefinidas numa classe filha
+     * se ela for qualificada como final.
+     */
+    final const BAR = 'bar';
+
     public function __construct(
         Closure $bar = null
     ) {
@@ -83,5 +97,10 @@ class SimpleClass
     private function bar(?string $text = 'Olá mundo'): string|null
     {
         return $text;
+    }
+
+    public function getConstante(): string
+    {
+        return static::FOO;
     }
 }
