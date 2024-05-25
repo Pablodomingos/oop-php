@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'pablo/poo-php-doc',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'pablodomingos/poo-php',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '2bb8de8d039adc6ab1c78099d7207ecd46e72af5',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'pablo/poo-php-doc' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'pablodomingos/poo-php' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '2bb8de8d039adc6ab1c78099d7207ecd46e72af5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
