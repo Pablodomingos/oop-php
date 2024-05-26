@@ -98,3 +98,17 @@ dump($instanceExtend->getConstante());
 
 dump(ExampleConstructClass::fromBasicData('BAR', 30));
 dump(ExampleConstructClass::fromJson(json_encode(['owner' => 'BAZ', 'age' => 1])));
+
+/**
+ * Retorno do método test()
+ *
+ * ExtendClass::testPublic
+ * SimpleClass::testPrivate
+ * 
+ * Isso acontece porque membros declarados como privados só podem ser acessados
+ * por classes que definem esse membro. 
+ */
+dump((new ExtendClass())->test());
+
+dump((new SimpleClass())->baz($simpleClassObj1));
+dump((new ExtendClass())->baz($instanceExtend));

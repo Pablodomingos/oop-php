@@ -8,6 +8,11 @@ use Closure;
 
 class ExtendClass extends SimpleClass
 {
+    /**
+     * A partir do PHP 7.1.0, constantes de classe podem ser declaradas como
+     * públicas, protegidas ou privadas. Constantes declaradas sem visibilidade
+     * são definidas como públicas.
+     */
     const FOO = 'Children foo';
 
     /**
@@ -58,5 +63,20 @@ class ExtendClass extends SimpleClass
     private function bar(): int
     {
         return 1;
+    }
+
+    public function testPublic(): string
+    {
+        return 'ExtendClass::testPublic';
+    }
+
+    protected function testProtected(): string
+    {
+        return 'ExtendClass::testProtected';
+    }
+
+    private function testPrivate(): string
+    {
+        return 'ExtendClass::testPrivate';
     }
 }

@@ -11,6 +11,7 @@ class SimpleClass
     //Declaração da propriedade
     public Closure|string $var = 'a default value';
     public Closure $bar;
+    private string $baz = 'Baz value';
 
     /**
      * A visibilidade padrão de um constânte é public.
@@ -102,5 +103,47 @@ class SimpleClass
     public function getConstante(): string
     {
         return static::FOO;
+    }
+
+    public function testPublic(): string
+    {
+        return 'SimpleClass::testPublic';
+    }
+
+    protected function testProtected(): string
+    {
+        return 'SimpleClass::testProtected';
+    }
+
+    private function testPrivate(): string
+    {
+        return 'SimpleClass::testPrivate';
+    }
+
+    public function test(): array
+    {
+        return [
+            'public' => $this->testPublic(),
+            'protected' => $this->testProtected(),
+            'private' => $this->testPrivate(),
+        ];
+    }
+
+    /**
+     * Objetos do mesmo tipo terão acesso a outros membros privados e protegidos
+     * mesmo que não sejam da mesma instância. Isso acontece por que os detalhes
+     * específicos de implementação já são conhecidos dentro destes objetos.
+     */
+    public function baz(self $obj): string
+    {
+        // Pode-se alterar a propriedade privada:
+        if ($obj::class !== self::class) {
+            $obj->baz = 'New baz value';
+        }
+
+        dump($obj->baz);
+
+        // Pode-se chamar método privado:
+        return $obj->testPrivate();
     }
 }
