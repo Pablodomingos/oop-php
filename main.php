@@ -118,3 +118,12 @@ dump((new SimpleClass())->getName());
 
 dump('SimpleClass '. (new SimpleClass())->getVersion());
 dump('ExtendClass ' . (new ExtendClass())->getVersion());
+
+dump((new SimpleClass())->smallTalk());
+dump((new SimpleClass())->bigTalk());
+dump((new SimpleClass())->talk());
+dump((new SimpleClass())->smallTalkA());
+// Fatal error: Uncaught Error: Cannot access protected property Pablo\PooPhp\SimpleClass::$small
+// dump((new SimpleClass())->small());
+
+

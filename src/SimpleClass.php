@@ -7,9 +7,12 @@ namespace Pablo\PooPhp;
 use Closure;
 use Pablo\PooPhp\Abstracts\AbstractClass;
 use Pablo\PooPhp\Interfaces\InterfaceFromSimpleClass;
+use Pablo\PooPhp\Traits\SimpleTrait;
 
 class SimpleClass extends AbstractClass implements InterfaceFromSimpleClass
 {
+    use SimpleTrait;
+
     public const NAME = 'Simple class name';
 
     //Declaração da propriedade
@@ -127,6 +130,7 @@ class SimpleClass extends AbstractClass implements InterfaceFromSimpleClass
     public function test(): array
     {
         return [
+            'trait_name' => static::$traitName,
             'public' => $this->testPublic(),
             'protected' => $this->testProtected(),
             'private' => $this->testPrivate(),
@@ -149,10 +153,5 @@ class SimpleClass extends AbstractClass implements InterfaceFromSimpleClass
 
         // Pode-se chamar método privado:
         return $obj->testPrivate();
-    }
-
-    public function getValueDiscounted(float $value = 0): float
-    {
-        return  $value - $this->percentage * $value;
     }
 }
