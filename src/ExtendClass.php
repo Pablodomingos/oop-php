@@ -77,6 +77,32 @@ class ExtendClass extends SimpleClass
 
     private function testPrivate(): string
     {
-        return 'ExtendClass::testPrivate';
+        //Dentro de uma função statica não é possível acessar o $this.
+        $teste = static function (): string {
+            $_self = new self();
+            return "{$_self->testProtected()} - ExtendClass::testPrivate";
+        };
+
+        return $teste();
+    }
+
+    public function baz(SimpleClass $obj): string
+    {
+        /**
+         * O método a palavra-chave "parent", seguido de dois pontos,
+         * é usada para acessar um método da classe pai, mesmo sendo
+         * sobrescrito na classe filha, ainda consegue chamar o método
+         * da classe herdada.
+         * 
+         * O parent é para heranças de 1º nível, ou seja, se o método
+         * estivesse definido na classe avô ou em uma classe abstrata, seria
+         * possível utilizar o parent, porém o correto seria utilizar o static.
+         */
+        return parent::baz($obj);
+    }
+
+    public function getVersion(): string
+    {
+        return static::VERSION_TEST;
     }
 }

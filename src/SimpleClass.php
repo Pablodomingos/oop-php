@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Pablo\PooPhp;
 
 use Closure;
+use Pablo\PooPhp\Abstracts\AbstractClass;
+use Pablo\PooPhp\Interfaces\InterfaceFromSimpleClass;
 
-class SimpleClass
+class SimpleClass extends AbstractClass implements InterfaceFromSimpleClass
 {
+    public const NAME = 'Simple class name';
+
     //Declaração da propriedade
     public Closure|string $var = 'a default value';
     public Closure $bar;
@@ -145,5 +149,10 @@ class SimpleClass
 
         // Pode-se chamar método privado:
         return $obj->testPrivate();
+    }
+
+    public function getValueDiscounted(float $value = 0): float
+    {
+        return  $value - $this->percentage * $value;
     }
 }
