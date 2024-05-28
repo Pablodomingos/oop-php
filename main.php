@@ -112,3 +112,9 @@ dump((new ExtendClass())->test());
 
 dump((new SimpleClass())->baz($simpleClassObj1));
 dump((new ExtendClass())->baz($instanceExtend));
+
+dump((new ExtendClass())->getValueDiscounted(100));
+dump((new SimpleClass())->getName());
+
+dump('SimpleClass '. (new SimpleClass())->getVersion());
+dump('ExtendClass ' . (new ExtendClass())->getVersion());
