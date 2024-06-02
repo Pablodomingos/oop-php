@@ -9,6 +9,7 @@ use Pablo\PooPhp\{
     ExtendClass,
     SimpleReadonlyClass,
     ExampleConstructClass,
+    OverloadingClass,
 };
 
 /**
@@ -126,4 +127,19 @@ dump((new SimpleClass())->smallTalkA());
 // Fatal error: Uncaught Error: Cannot access protected property Pablo\PooPhp\SimpleClass::$small
 // dump((new SimpleClass())->small());
 
+$overloadingClass = new OverloadingClass;
+$overloadingClass->testSet = 'Teste';
+dump($overloadingClass->testSet);
+dump(isset($overloadingClass->testSet));
+// unset($overloadingClass->testSet);
+
+// Não é feito a sobrecarga da propriedade porque ela foi declarada como publica.
+dump($overloadingClass->declared);
+dump($overloadingClass->getHidden());
+dump($overloadingClass->testSet);
+
+dump($overloadingClass->getData());
+
+$overloadingClass->runTest('Teste', 'Teste2', 'Teste3');
+$overloadingClass::runTest('Teste', 'Teste2', 'Teste3');
 
